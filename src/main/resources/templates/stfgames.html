@@ -15,8 +15,12 @@
 
   <input type="file" id="foto" style="display: none;">
   <button type="button" class="btn btn-success" onclick="$('#foto').click()">Ingresar personajes</button>
+  <div class="container-fluid " >
+      <div class="row" id="imagenessubidas">
 
-  <script>
+      </div>
+  </div>
+    <script>
     $(document).ready(function() {
 
         //Trabjar sobre la imagen
@@ -26,12 +30,10 @@
 
             leerarch.onload = function(evento) {
                 var imagen = evento.target.result;
-
-                // Ejemplo: Mostrar la imagen en la página
-
-                $('#previewImage').attr('src', imagen);
-                $("#principal").append('<img  src="' +imagen+ '" alt="Preview Image" width="150" height="150" class="rounded-circle">\n')
-
+                $("#imagenessubidas").append('<div class="col ">\n' +
+                    '          <button type="button" class="btn btn-primary" >Cerrar</button>\n' +
+                    '          <img src="' +imagen+ '" width="150" height="150" alt="#" class="rounded-circle">\n' +
+                    '      </div>');
             };
             leerarch.readAsDataURL(archivo);
         });
@@ -40,16 +42,30 @@
 
     });
   </script>
-
-  <!-- Elemento de ejemplo para mostrar la imagen -->
-  <img id="previewImage" src="" alt="Preview Image" width="150" height="150" class="rounded-circle">
-
-
     </hr>
   <div class="container-fluid " id = "divpersonaje">
+      <div class="row">
+
       <div class="col ">
           <button type="button" class="btn btn-primary" >Cerrar</button>
           <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
+      </div>
+      <div class="col ">
+          <button type="button" class="btn btn-primary" >Cerrar</button>
+          <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
+      </div>
+      <div class="col ">
+          <button type="button" class="btn btn-primary" >Cerrar</button>
+          <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
+      </div>
+      <div class="col ">
+          <button type="button" class="btn btn-primary" >Cerrar</button>
+          <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
+      </div>
+      <div class="col ">
+          <button type="button" class="btn btn-primary" >Cerrar</button>
+          <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
+      </div>
       </div>
 
 
