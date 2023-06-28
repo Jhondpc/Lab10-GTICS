@@ -22,7 +22,7 @@
   </div>
     <script>
     $(document).ready(function() {
-
+        var arreglo = [];
         //Trabjar sobre la imagen
         $("#foto").change(function (event){
             var archivo = event.target.files[0];
@@ -30,17 +30,25 @@
 
             leerarch.onload = function(evento) {
                 var imagen = evento.target.result;
-                $("#imagenessubidas").append('<div class="col-4"  style="margin-top: 30px">\n' +
+                $("#imagenessubidas").append('<div class="col-4" style="margin-top: 30px">\n' +
                     '              <div class="row col-6" style="margin-left: 60px;margin-bottom: -20px">\n' +
-                    '                  <button type="button" class="btn btn-primary">Cerrar</button>\n' +
+                    '                  <button type="button" class="borrar btn btn-primary">Borrar</button>\n' +
                     '              </div>\n' +
                     '              <div class="row">\n' +
                     '                  <img src="'+imagen+'" width="150" height="150" alt="#" class="rounded-circle">\n' +
                     '              </div>\n' +
                     '          </div>');
+                arreglo.push(imagen);
             };
             leerarch.readAsDataURL(archivo);
+            $("p").text("Total de imagenes seleccionadas: "+(arreglo.length+1));
+            $("#imagenessubidas").on("click",".borrar", function (){
+                $("#imagenessubidas").empty();
+            });
+
         });
+
+
 
 
 
