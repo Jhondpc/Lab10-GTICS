@@ -30,10 +30,14 @@
 
             leerarch.onload = function(evento) {
                 var imagen = evento.target.result;
-                $("#imagenessubidas").append('<div class="col ">\n' +
-                    '          <button type="button" class="btn btn-primary" >Cerrar</button>\n' +
-                    '          <img src="' +imagen+ '" width="150" height="150" alt="#" class="rounded-circle">\n' +
-                    '      </div>');
+                $("#imagenessubidas").append('<div class="col-4"  style="margin-top: 30px">\n' +
+                    '              <div class="row col-6" style="margin-left: 60px;margin-bottom: -20px">\n' +
+                    '                  <button type="button" class="btn btn-primary">Cerrar</button>\n' +
+                    '              </div>\n' +
+                    '              <div class="row">\n' +
+                    '                  <img src="'+imagen+'" width="150" height="150" alt="#" class="rounded-circle">\n' +
+                    '              </div>\n' +
+                    '          </div>');
             };
             leerarch.readAsDataURL(archivo);
         });
@@ -43,18 +47,23 @@
     });
   </script>
     </hr>
-  <div class="container-fluid " id = "divpersonaje">
+  <!--<div class="container-fluid " id = "divpersonaje">
       <div class="row">
+          <div class="col-4"  style="margin-top: 30px">
+              <div class="row col-6" style="margin-left: 60px;margin-bottom: -20px">
+                  <button type="button" class="btn btn-primary">Cerrar</button>
+              </div>
+              <div class="row">
+                  <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
+              </div>
+          </div>
 
-      <div class="col ">
-          <button type="button" class="btn btn-primary" >Cerrar</button>
-          <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
+
       </div>
-      </div>
 
 
 
-    </div>
+    </div>-->
 
 
 </div>
