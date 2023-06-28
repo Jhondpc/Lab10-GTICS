@@ -8,14 +8,46 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<div class="container-fluid p-4">
+<div class="container-fluid p-4" id="principal">
   <h2>Juegos de personajes avanzados</h2>
     <hr/>
     <p>Total de imagenes seleccionadas: 0</p>
-    <button type="button" id="form" class="btn btn-success" >Ingresar personajes</button>
 
-    <div class="container-fluid " id = "divpersonaje">
-      <div class="col " id="personajes">
+  <input type="file" id="foto" style="display: none;">
+  <button type="button" class="btn btn-success" onclick="$('#foto').click()">Ingresar personajes</button>
+
+  <script>
+    $(document).ready(function() {
+
+        //Trabjar sobre la imagen
+        $("#foto").change(function (event){
+            var archivo = event.target.files[0];
+            var leerarch = new FileReader();
+
+            leerarch.onload = function(evento) {
+                var imagen = evento.target.result;
+
+                // Ejemplo: Mostrar la imagen en la página
+
+                $('#previewImage').attr('src', imagen);
+                $("#principal").append('<img  src="' +imagen+ '" alt="Preview Image" width="150" height="150" class="rounded-circle">\n')
+
+            };
+            leerarch.readAsDataURL(archivo);
+        });
+
+
+
+    });
+  </script>
+
+  <!-- Elemento de ejemplo para mostrar la imagen -->
+  <img id="previewImage" src="" alt="Preview Image" width="150" height="150" class="rounded-circle">
+
+
+    </hr>
+  <div class="container-fluid " id = "divpersonaje">
+      <div class="col ">
           <button type="button" class="btn btn-primary" >Cerrar</button>
           <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
       </div>
@@ -34,13 +66,15 @@
 
 
         // Mostrar los cuadrados
-        $("#personajes").append('<div class="col-sm p-2 me-1 mt-2 rounded justify-content-md-center">\n' +
+        $("#divpersonaje").append('<div class="col ">\n' +
+                '          <button type="button" class="btn btn-primary" >Cerrar</button>\n' +
                 '          <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">\n' +
-                '        </div>');
+                '      </div>');
 
 
 
     });
+
 
 
 
