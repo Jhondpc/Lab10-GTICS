@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,25 +10,16 @@
 <body>
 <div class="container-fluid p-4">
   <h2>Juegos de personajes avanzados</h2>
-  <hr/>
-
-    <div class="form-group  mb-3">
-      <label>Ingrese el numero de personajes</label>
-      <input type="text" class="form-control" id="numpersonajes" placeholder="">
-      <div class="invalid-feedback" id="errornumpersonaje" style="display: none">Campo obligatorio</div>
-    </div>
-    <div class="form-group mb-3">
-      <label>Ingrese el numero de la pista (m)</label>
-      <input type="text" class="form-control" id="tampista" placeholder="">
-      <div class="invalid-feedback" id="errortampista" style="display: none">Campo obligatorio</div>
-    </div>
     <hr/>
-    <button type="button" id="form" class="btn btn-primary" >Ingresar personajes</button>
+    <p>Total de imagenes seleccionadas: 0</p>
+    <button type="button" id="form" class="btn btn-success" >Ingresar personajes</button>
 
     <div class="container-fluid " id = "divpersonaje">
-      <div class="row" id="personajes">
-
+      <div class="col " id="personajes">
+          <button type="button" class="btn btn-primary" >Cerrar</button>
+          <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">
       </div>
+
 
 
     </div>
@@ -37,52 +28,15 @@
 </div>
 <script>
   $(document).ready(function (){
-    var regex = /^[0-9]+$/;
+
 
     $("#form").click(function (){
-      var numeroPersonaje=$("#numpersonajes").val();
-      var tampista = $("#tampista").val();
 
-      //validar numero de personajes
-      if( numeroPersonaje == "" || !regex.test(numeroPersonaje) || numeroPersonaje<=0 || (numeroPersonaje>5 && numeroPersonaje<3)){
-        $("#numpersonajes").addClass("is-invalid");
-        $("#errornumpersonaje").show(500).delay(1000).hide(500);
-      }else{
-        $("#numpersonajes").removeClass("is-invalid");
-        $("#numpersonajes").addClass("is-valid");
 
-      }
-      //validar tamaño pista
-      if(tampista == "" || !regex.test(tampista) || tampista<=0 || (tampista>8 && tampista<4)){
-        $("#tampista").addClass("is-invalid");
-        $("#errortampista").show(500).delay(1000).hide(500);
-      }else {
-        $("#tampista").removeClass("is-invalid");
-        $("#tampista").addClass("is-valid");
-
-      }
-      for (let i = 1; i <= numeroPersonaje; i++) {
         // Mostrar los cuadrados
-        $("#personajes").append('' +
-                '<div class="col-sm p-2 me-1 mt-2 rounded justify-content-md-center" style="background: cornflowerblue" id="' + i + '" >\n' +
-                '        <img src="/src/main/resources/static/robot.png" width="150" height="150" alt="#" class="rounded-circle">\n' +
-                '        <div class="d-flex ">\n' +
-                '          <input class="form-control me-1" >\n' +
-                '          <input type="color" id="color' + i + '" class="color">\n' +
-                '        </div>\n' +
-                '        <button class="btn btn-success mt-1 ">Seleccionar personaje</button>\n' +
-                '      </div>');
-
-        $("#personajes").on("change", "#color" + i, function () {
-          var color = $(this).val();
-          $("#" + i).css('background-color', color);
-        });
-
-
-
-      }
-
-      $("#divpersonaje").append('<button class="btn btn-primary mt-2">Iniciar juego</button>')
+        $("#personajes").append('<div class="col-sm p-2 me-1 mt-2 rounded justify-content-md-center">\n' +
+                '          <img src="/src/main/resources/static/abra.png" width="150" height="150" alt="#" class="rounded-circle">\n' +
+                '        </div>');
 
 
 
