@@ -20,6 +20,12 @@
 
       </div>
   </div>
+
+  <div class="container-fluid" style="margin-top: 50px">
+    <div id="tablero">
+
+    </div>
+  </div>
     <script>
     $(document).ready(function() {
       var arreglo = [];
@@ -53,6 +59,34 @@
             }
             $("p").text("Total de imágenes seleccionadas: " + (arreglo.length));
           });
+
+          //Generar Tablero
+          var totalImagenes = (arreglo.length)*2; // Total de imágenes en el tablero
+          var filas, columnas;
+
+          //Determinar el número de filas y columnas
+          if (Math.sqrt(totalImagenes) % 1 === 0) {
+            //Si el tablero es cuadrado
+            filas = Math.sqrt(totalImagenes);
+            columnas = filas;
+          } else {
+            //Si el tablero es rectangular
+            filas = Math.ceil(Math.sqrt(totalImagenes));
+            columnas = Math.floor(Math.sqrt(totalImagenes));
+            //Ajustar la distribución para que la diferencia entre filas y columnas sea a lo más igual a 1
+            while (filas * columnas < totalImagenes) {
+              columnas++;
+            }
+          }
+
+          //$('#tablero').text("filas:" +filas + "columnas:"+ columnas )
+          var celda = $('<div class="celda" style="background-color: lightblue; width: 70px; height: 70px; margin: 3px"></div>');
+
+          for (var i=0; i<filas; i++){
+            for (var j=0; j<columnas; j++){
+              $('#tablero').append(celda)
+            }
+          }
         };
 
         leerarch.readAsDataURL(archivo);
@@ -65,7 +99,6 @@
           $("#ingresarPersonaje").prop('disabled', false);
         }
       });
-
 
     });
   </script>
